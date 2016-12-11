@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-11 18:38+0100\n"
+"PO-Revision-Date: 2016-12-11 18:51+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: draganddrop.py:25
+msgid "Drag and drop"
+msgstr "Arrastrar y soltar"
+
+#: draganddrop.py:39
+msgid "without selection for drag and drop"
+msgstr "Sin selección para arrastrar y soltar"
+
+#: draganddrop.py:42
+msgid " marked for drag and drop"
+msgstr "Marcado para arrastrar y soltar"
+
+#: draganddrop.py:45
+msgid "(inaccessible from here)"
+msgstr "(inaccesible desde aquí)"
+
+#: draganddrop.py:49
+#, python-format
+msgid "Mouse cursor is on %d, %d above "
+msgstr "El cursor del ratón está en %d, %d sobre "
+
+#: draganddrop.py:53
+msgid "(outside of the active window)"
+msgstr "(fuera de la ventana activa)"
+
+#: draganddrop.py:55
+msgid "Left button locked"
+msgstr "botón izquierdo bloqueado"
+
+#: draganddrop.py:57
+msgid "Right button locked"
+msgstr "botón derecho bloqueado"
+
+#: draganddrop.py:59
+msgid ""
+"Reports on the position of the mouse cursor and the object to which it "
+"points. Twice, reports on the marked object for drag and drop."
+msgstr ""
+"Informa sobre la posición del cursor del ratón y el objeto al que apunta. "
+"Pulsado dos veces, informa sobre el objeto marcado para arrastrar y soltar."
+
+#: draganddrop.py:63
+msgid "selection cancelled"
+msgstr "selección cancelada"
+
+#: draganddrop.py:77
+#, python-format
+msgid "%s selected to drag"
+msgstr "%s seleccionado para arrastrar"
+
+#: draganddrop.py:79
+msgid "Marks the object in navigator to be dragged."
+msgstr "Marca el objeto en el navegador para ser arrastrado."
+
+#: draganddrop.py:84
+msgid "Nothing is selected for drag"
+msgstr "no hay selección para arrastrar"
+
+#: draganddrop.py:89
+msgid "press space or arrows to drag and drop"
+msgstr "Pulsa espacio o flechas para arrastrar y soltar"
+
+#: draganddrop.py:98
+msgid ""
+"Drags the selected object. Then press space, arrows or Enter to choose where "
+"to drop it. "
+msgstr ""
+"Arrastra el objeto seleccionado. A continuación, pulsa la tecla de espacio, "
+"las flechas o la tecla Enter para elegir donde soltarlo."
+
+#: draganddrop.py:103
+msgid "can't move it on himself"
+msgstr "no se puede mover sobre sí mismo"
+
+#: draganddrop.py:107 draganddrop.py:120 draganddrop.py:130 draganddrop.py:140
+#: draganddrop.py:150
+msgid "Can't drop here"
+msgstr "no se puede soltar aquí"
+
+#: draganddrop.py:164
+msgid "Cannot find the object marked."
+msgstr "no se encuentra el objeto marcado"
+
+#: draganddrop.py:170
+#, python-format
+msgid "click in %d, %d"
+msgstr "clic en %d, %d"
+
+#: draganddrop.py:172
+msgid "dragging"
+msgstr "arrastrando"
+
+#: draganddrop.py:176
+#, python-format
+msgid "moved to %d, %d"
+msgstr "movido a %d, %d"
+
+#: draganddrop.py:182
+msgid "dropped on "
+msgstr "soltado en "
+
+#: draganddrop.py:185
+msgid "can't drop here"
+msgstr "no se puede soltar aquí"
