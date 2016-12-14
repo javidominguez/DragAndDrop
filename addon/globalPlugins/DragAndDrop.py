@@ -1,4 +1,4 @@
-# DragAndDrop version 1.0dev (december 2016)
+# DragAndDrop version 1.1dev (december 2016)
 # NVDA addon for drag an drop objects
 # Author Javi Dominguez <fjavids@gmail.com>
 # License GNU GPL
@@ -18,6 +18,7 @@ from time import sleep
 from threading import Timer
 import tones
 import globalVars
+import mouseHandler
 
 addonHandler.initTranslation()
 
@@ -35,6 +36,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.kbTimeout = None
 
 	def script_mouseCursorInfo(self, gesture):
+		if scriptHandler.getLastScriptRepeatCount() == 2:
+			ui.message (_("Window in %d, %d. Width %d, height %d") % api.getForegroundObject().location)
+			return
 		if scriptHandler.getLastScriptRepeatCount() == 1:
 			if not self.objectToDrag:
 				ui.message(_("without selection for drag and drop"))
@@ -56,6 +60,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message (_("Left button locked"))
 		if winUser.getKeyState(winUser.VK_RBUTTON)&32768:
 			ui.message (_("Right button locked"))
+		ui.message(_("%s cursor") % mouseHandler.curMouseShape)
 	# Translators: Message presented in input help mode.
 	script_mouseCursorInfo.__doc__ = _("Reports on the position of the mouse cursor and the object to which it points. Twice, reports on the marked object for drag and drop.")
 
@@ -71,6 +76,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			y = obj.location[1]+obj.location[3]/2
 			# If the marked position points to a different object, mark the top corner.
 			# This happens with large objects, such as windows or panels, that contain other objects.
+			# Note: Drag and drop from here does not move the object but that it will be resized
 			if api.getDesktopObject().objectFromPoint(x,y) != self.objectToDrag:
 				x = obj.location[0]+1
 				y = obj.location[1]+1
@@ -81,8 +87,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def script_dragAndDrop(self, gesture):
 		if not self.objectToDrag:
-			tones.beep(120, 100)
-			ui.message(_("Nothing is selected for drag"))
+			self.error(_("Nothing is selected for drag"))
 			return
 		if self.toggling:
 			tones.beep(100,10)
@@ -183,8 +188,45 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("dropped on "))
 			speech.speakObject(obj, reason=controlTypes.REASON_MOUSE)
 		else:
-			self.error(_("can't drop here"))
+			tones.beep(500, 100)
 		self.objectToDrag = None
+
+	def script_changeWindow(self, gesture):
+		size = ""
+		horizontal = ""
+		vertical = ""
+		gesture.send()
+		X, Y, W, H = api.getDesktopObject().location
+		desk = W*H
+		x, y, w, h = api.getForegroundObject().location
+		win = w*h
+		rSize = win*100/desk
+		# size of window
+		if rSize > 90:
+			size = _("maximized")
+		elif rSize > 75:
+			size = _("large")
+		elif rSize >35:
+			size = _("medium")
+		elif rSize > 10:
+			size = _("small")
+		else:
+			size = _("very small")
+		# window position
+		if x > (W-w-x)*0.95 and x < (W-w-x)*1.05 and y > (H-h-y)*0.95 and y < (H-h-y)*1.05:
+			vertical = _("centered")
+		else:
+			# vertical position
+			if h < H*0.75 and y < H/2+1:
+				vertical = _("up")
+			if y > H*0.25 and y+h > H*0.75:
+				vertical = _("down")
+			# horizontal position
+			if w < W*0.66 and x < W/2+1:
+				horizontal = _("on left")
+			if x > W*0.25 and x+w >= W*0.75:
+				horizontal = _("on right")
+		ui.message(_("%s window, %s %s") % (size, vertical, horizontal))
 
 	def error(self, message):
 		tones.beep(120, 100)
@@ -204,7 +246,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	"kb(laptop):NVDA+Control+,": "mouseCursorInfo",
 	"kb:NVDA+,": "selectObjectToDrag",
 	"kb(desktop):NVDA+.": "dragAndDrop",
-	"kb(laptop):NVDA+Shift+,": "dragAndDrop"
+	"kb(laptop):NVDA+Shift+,": "dragAndDrop",
+	"kb:Windows+leftArrow": "changeWindow",
+	"kb:Windows+rightArrow": "changeWindow",
+	"kb:Windows+upArrow": "changeWindow",
+	"kb:Windows+downArrow": "changeWindow"
 	} 
 
 	__ddGestures = {
