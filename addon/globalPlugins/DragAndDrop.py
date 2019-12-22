@@ -1,7 +1,7 @@
-# DragAndDrop version 1.1dev (december 2016)
 # NVDA addon for drag an drop objects
-# Author Javi Dominguez <fjavids@gmail.com>
-# License GNU GPL
+#This file is covered by the GNU General Public License.
+#See the file COPYING.txt for more details.
+#Copyright (C) 2016-2019 Javi Dominguez <fjavids@gmail.com>
 
 import globalPluginHandler
 import addonHandler
@@ -12,7 +12,6 @@ import api
 import ui
 import controlTypes
 import speech
-import win32api
 import winUser
 from time import sleep
 from threading import Timer
@@ -50,7 +49,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				ui.message(_("(inaccessible from here)"))
 			return
 		fg = api.getForegroundObject()
-		x, y = win32api.GetCursorPos()
+		x, y = winUser.getCursorPos()
 		ui.message(_("Mouse cursor is on %d, %d above ") % (x, y))
 		mouse = api.getDesktopObject().objectFromPoint(x,y)
 		speech.speakObject(mouse, reason=controlTypes.REASON_MOUSE)
@@ -72,8 +71,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			obj = api.getNavigatorObject()
 			self.objectToDrag = obj
 			# Mark the center of the object
-			x = obj.location[0]+obj.location[2]/2
-			y = obj.location[1]+obj.location[3]/2
+			x = obj.location[0]+obj.location[2]//2
+			y = obj.location[1]+obj.location[3]//2
 			# If the marked position points to a different object, mark the top corner.
 			# This happens with large objects, such as windows or panels, that contain other objects.
 			# Note: Drag and drop from here does not move the object but that it will be resized
@@ -112,8 +111,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
-		x = obj.location[0]+obj.location[2]/2
-		y = obj.location[1]+obj.location[3]/2
+		x = obj.location[0]+obj.location[2]//2
+		y = obj.location[1]+obj.location[3]//2
 		if api.getDesktopObject().objectFromPoint(x,y) != obj:
 			x = obj.location[0]+1
 			y = obj.location[1]+1
@@ -125,7 +124,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
-		x = obj.location[0]+obj.location[2]/2
+		x = obj.location[0]+obj.location[2]//2
 		y = obj.location[1]-1
 		self.dragAndDrop(x, y)
 
@@ -135,7 +134,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
-		x = obj.location[0]+obj.location[2]/2
+		x = obj.location[0]+obj.location[2]//2
 		y = obj.location[1]+obj.location[3]+1
 		self.dragAndDrop(x, y)
 
@@ -146,7 +145,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.error(_("Can't drop here"))
 			return
 		x = obj.location[0]+obj.location[2]+1
-		y = obj.location[1]+obj.location[3]/2
+		y = obj.location[1]+obj.location[3]//2
 		self.dragAndDrop(x, y)
 
 	def script_dropLeft(self, gesture):
@@ -156,11 +155,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.error(_("Can't drop here"))
 			return
 		x = obj.location[0]-1
-		y = obj.location[1]+obj.location[3]/2
+		y = obj.location[1]+obj.location[3]//2
 		self.dragAndDrop(x, y)
 
 	def script_dropInMousePosition(self, gesture):
-		x, y = win32api.GetCursorPos()
+		x, y = winUser.getCursorPos()
 		self.dragAndDrop(x, y)
 
 	def dragAndDrop(self, drop_x, drop_y):
@@ -169,17 +168,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if api.getDesktopObject().objectFromPoint(x,y) != self.objectToDrag:
 			self.error(_("Cannot find the object marked."))
 			return
-		win32api.SetCursorPos((x, y))
+		winUser.setCursorPos(x, y)
 		if winUser.getKeyState(winUser.VK_LBUTTON)&32768:
 			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,1,None,None)
-		ui.message(_("click in %d, %d") % win32api.GetCursorPos())
+		ui.message(_("click in %d, %d") % (winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
 		sleep(1.0)
 		ui.message(_("dragging"))
 		sleep(0.5)
-		win32api.SetCursorPos((drop_x, drop_y))
+		winUser.setCursorPos(drop_x, drop_y)
 		obj = api.getDesktopObject().objectFromPoint(drop_x,drop_y) 
-		ui.message(_("moved to %d, %d") % win32api.GetCursorPos())
+		ui.message(_("moved to %d, %d") % (winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
 		sleep(0.5)
 		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
 		sleep(1.0)
