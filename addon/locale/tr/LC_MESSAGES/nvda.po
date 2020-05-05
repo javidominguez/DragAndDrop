@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-13 15:13+0100\n"
+"PO-Revision-Date: 2019-12-23 10:58+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: draganddrop.py:28
+msgid "Drag and drop"
+msgstr "Sürükle ve bırak"
+
+#: draganddrop.py:41
+#, python-format
+msgid "Window in %d, %d. Width %d, height %d"
+msgstr "Pencere içinde  %d, %d. genişlik %d, yükseklik %d"
+
+#: draganddrop.py:45
+msgid "without selection for drag and drop"
+msgstr "sürükle ve bırak için seçilmemiş"
+
+#: draganddrop.py:48
+msgid " marked for drag and drop"
+msgstr "Sürükle bırak için seçilmiş"
+
+#: draganddrop.py:51
+msgid "(inaccessible from here)"
+msgstr "(buradan erişilemez)"
+
+#: draganddrop.py:55
+#, python-format
+msgid "Mouse cursor is on %d, %d above "
+msgstr "Fare imleci konumu %d, %d üzerinde"
+
+#: draganddrop.py:59
+msgid "(outside of the active window)"
+msgstr "(etkin pencerenin dışında)"
+
+#: draganddrop.py:61
+msgid "Left button locked"
+msgstr "sol fare kilitli"
+
+#: draganddrop.py:63
+msgid "Right button locked"
+msgstr "sağ fare kilitli"
+
+#: draganddrop.py:64
+#, python-format
+msgid "%s cursor"
+msgstr "%s imleci"
+
+#: draganddrop.py:68
+msgid ""
+"Reports on the position of the mouse cursor and the object to which it "
+"points. Twice, reports on the marked object for drag and drop."
+msgstr ""
+"Fare imlecinin konumu ve üzerindeki nesne hakkında bilgi verir. İki kez "
+"basıldığında, sürükleyip bırakmak üzere işaretlenmiş nesne hakkında bilgi "
+"verir."
+
+#: draganddrop.py:72
+msgid "selection cancelled"
+msgstr "seçim iptal edildi"
+
+#: draganddrop.py:88
+#, python-format
+msgid "%s selected to drag"
+msgstr "%s sürüklemek için seçildi"
+
+#: draganddrop.py:90
+msgid "Marks the object in navigator to be dragged."
+msgstr "Nesne sunucusu konumundaki nesneyi sürüklemek için işaretler."
+
+#: draganddrop.py:95
+msgid "Nothing is selected for drag"
+msgstr "sürüklemek için seçim yok"
+
+#: draganddrop.py:100
+msgid "press space or arrows to drag and drop"
+msgstr "Sürükleyip bırakmak için ara çubuğu veya yön tuşlarına basın"
+
+#: draganddrop.py:109
+msgid ""
+"Drags the selected object. Then press space, arrows or Enter to choose where "
+"to drop it. "
+msgstr ""
+"Seçilen nesneyi sürükler. Ardından, nereye bırakacağınızı seçmek için "
+"boşluk, yön veya Enter tuşuna basın."
+
+#: draganddrop.py:114
+msgid "can't move it on himself"
+msgstr "Kendi konumuna taşınamaz"
+
+#: draganddrop.py:118 draganddrop.py:131 draganddrop.py:141 draganddrop.py:151
+#: draganddrop.py:161
+msgid "Can't drop here"
+msgstr "Buraya bırakılamıyor"
+
+#: draganddrop.py:175
+msgid "Cannot find the object marked."
+msgstr "işaretli nesne bulunamadı"
+
+#: draganddrop.py:181
+#, python-format
+msgid "click in %d, %d"
+msgstr "%d, %d tıkla"
+
+#: draganddrop.py:183
+msgid "dragging"
+msgstr "sürükleniyor"
+
+#: draganddrop.py:187
+#, python-format
+msgid "moved to %d, %d"
+msgstr "%d, %d konumuna taşındı"
+
+#: draganddrop.py:193
+msgid "dropped on "
+msgstr "Bırakıldı"
+
+#: draganddrop.py:212
+msgid "maximized"
+msgstr "Ekran kaplandı"
+
+#: draganddrop.py:214
+msgid "large"
+msgstr "Büyük"
+
+#: draganddrop.py:216
+msgid "medium"
+msgstr "Orta"
+
+#: draganddrop.py:218
+msgid "small"
+msgstr "Küçük"
+
+#: draganddrop.py:220
+msgid "very small"
+msgstr "Çok küçük"
+
+#: draganddrop.py:223
+msgid "centered"
+msgstr "Ortalı"
+
+#: draganddrop.py:227
+msgid "up"
+msgstr "Yukarı"
+
+#: draganddrop.py:229
+msgid "down"
+msgstr "Aşağı"
+
+#: draganddrop.py:232
+msgid "on left"
+msgstr "Solda"
+
+#: draganddrop.py:234
+msgid "on right"
+msgstr "Sağda"
+
+#: draganddrop.py:235
+#, python-format
+msgid "%s window, %s %s"
+msgstr "Pencere %s, %s %s"
+
+#~ msgid "can't drop here"
+#~ msgstr "no se puede soltar aquí"
