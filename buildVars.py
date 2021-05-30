@@ -19,13 +19,19 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description" : _("""Makes it easy to drag and drop objects."""),
 	# version
-	"addon_version" : "1.0dev",
+	"addon_version" : "2.0.2dev",
 	# Author(s)
 	"addon_author" : u"Javi Dominguez <fjavids@gmail.com>",
 	# URL for the add-on documentation support
 	"addon_url" : "https://github.com/javidominguez/DragAndDrop/releases",
 	# Documentation file name
 	"addon_docFileName" : "readme.html",
+	# Minimum NVDA version supported (e.g. "2018.3.0")
+	"addon_minimumNVDAVersion" : None,
+	# Last NVDA version supported/tested (e.g. "2018.4.0", ideally more recent than minimum version)
+	"addon_lastTestedNVDAVersion" : "2021.1.0",
+	# Add-on update channel (default is stable or None)
+	"addon_updateChannel" : None,
 }
 
 
