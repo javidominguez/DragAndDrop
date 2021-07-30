@@ -16,6 +16,7 @@ Nvda addon for drag and drop objects.
 
 
 There are these options  for drop:
+
 + Press Enter for drop the marked object in the current mouse cursor.
 + Press Space for drop it on the current  object in navigator.
 + Press arrows for drop it around the current object in navigator.
