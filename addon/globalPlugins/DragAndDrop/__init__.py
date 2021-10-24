@@ -11,6 +11,14 @@ import appModules
 import api
 import ui
 import controlTypes
+# controlTypes module compatibility with old versions of NVDA
+if not hasattr(controlTypes, "Role"):
+	setattr(controlTypes, "Role", type('Enum', (), dict(
+	[(x.split("ROLE_")[1], getattr(controlTypes, x)) for x in dir(controlTypes) if x.startswith("ROLE_")])))
+	setattr(controlTypes, "State", type('Enum', (), dict(
+	[(x.split("STATE_")[1], getattr(controlTypes, x)) for x in dir(controlTypes) if x.startswith("STATE_")])))
+	setattr(controlTypes, "role", type("role", (), {"_roleLabels": controlTypes.roleLabels}))
+# End of compatibility fixes
 import speech
 import winUser
 from time import sleep
@@ -82,7 +90,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				x = obj.location[0]+1
 				y = obj.location[1]+1
 			self.dragFromPosition = (x, y)
-			ui.message(_("%s selected to drag") % controlTypes.roleLabels[obj.role])
+			ui.message(_("%s selected to drag") % controlTypes.role._roleLabels[obj.role])
 	# Translators: Message presented in input help mode.
 	script_selectObjectToDrag.__doc__ = _("Marks the object in navigator to be dragged.")
 
@@ -109,7 +117,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if self.objectToDrag == obj:
 			self.error(_("can't move it on himself"))
 			return
-		if obj.location == (0, 0, 0, 0) or controlTypes.STATE_INVISIBLE in obj.states or controlTypes.STATE_OFFSCREEN in obj.states \
+		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
@@ -122,7 +130,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def script_dropAbove(self, gesture):
 		obj = api.getNavigatorObject()
-		if obj.location == (0, 0, 0, 0) or controlTypes.STATE_INVISIBLE in obj.states or controlTypes.STATE_OFFSCREEN in obj.states \
+		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
@@ -132,7 +140,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def script_dropBelow(self, gesture):
 		obj = api.getNavigatorObject()
-		if obj.location == (0, 0, 0, 0) or controlTypes.STATE_INVISIBLE in obj.states or controlTypes.STATE_OFFSCREEN in obj.states \
+		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
@@ -142,7 +150,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def script_dropRight(self, gesture):
 		obj = api.getNavigatorObject()
-		if obj.location == (0, 0, 0, 0) or controlTypes.STATE_INVISIBLE in obj.states or controlTypes.STATE_OFFSCREEN in obj.states \
+		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
@@ -152,7 +160,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def script_dropLeft(self, gesture):
 		obj = api.getNavigatorObject()
-		if obj.location == (0, 0, 0, 0) or controlTypes.STATE_INVISIBLE in obj.states or controlTypes.STATE_OFFSCREEN in obj.states \
+		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
 			return
