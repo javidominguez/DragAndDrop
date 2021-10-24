@@ -1,6 +1,8 @@
 ﻿@charset "utf-8";
 body { 
 font-family : Verdana, Arial, Helvetica, Sans-serif;
+color : #FFFFFF;
+background-color : #000000;
 line-height: 1.2em;
 } 
 h1, h2 {text-align: center}
@@ -24,3 +26,5 @@ a { text-decoration : underline;
 text-decoration : none; 
 }
 a:focus, a:hover {outline: solid}
+:link {color: #0000FF;
+background-color: #FFFFFF}
