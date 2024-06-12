@@ -252,8 +252,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.kbTimeout.cancel()
 
 	__gestures = {
-	"kb(desktop):NVDA+numpad9": "mouseCursorInfo",
-	"kb(laptop):NVDA+Control+,": "mouseCursorInfo",
+	"kb:NVDA+Control+,": "mouseCursorInfo",
 	"kb:NVDA+,": "selectObjectToDrag",
 	"kb(desktop):NVDA+.": "dragAndDrop",
 	"kb(laptop):NVDA+Shift+,": "dragAndDrop",
