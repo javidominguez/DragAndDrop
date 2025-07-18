@@ -1,22 +1,24 @@
-# DragAndDrop (Перетягування)
+**DragAndDrop**
 
-Додаток для NVDA, який дає змогу перетягувати об’єкти.
+Add-on for NVDA that enables dragging and dropping objects.
 
-## ВИКОРИСТАННЯ
+# Usage
 
-1. Позначте об’єкт, який хочете перетягнути.
-2. Перемістіть курсор мишки чи об’єктний навігатор до місця, в яке ви хочете його помістити.
-3. Оберіть параметр для переміщення.
+1.  Select the object you want to drag.
+2.  Move the mouse cursor or object navigator to the target location.
+3.  Choose a drop option.
 
-| ім’я скрипта | Desktop-розкладка | Laptop-розкладка | Опис |
-| - | - | - | - |
-| mouseCursorInfo | NVDA+numpad9 | NVDA+Control+, | Повідомляє позицію курсора мишки і об’єкт, на який він вказує. Подвійне натискання повідомляє назву об’єкта, позначеного для перетягування. |
-| selectObjectToDrag | NVDA+, | NVDA+, | Позначає об’єкт у позиції навігатора для перетягування. |
-| DragAndDrop | NVDA+. | NVDA+Shift+, | Перетягує позначений об’єкт. Потім натисніть пробіл, стрілки чи Enter, щоб обрати, куди його помістити. |
+# Scripts and Key Bindings
 
+# drag options
+| **Script Name**    | **Desktop Layout** | **Laptop Layout** | **Description**                                                                                                 |
+|--------------------|--------------------|-------------------|-----------------------------------------------------------------------------------------------------------------|
+| mouseCursorInfo    | NVDA + numpad9     | NVDA + Ctrl + ,   | Announces the mouse cursor position and the object under it. Double-press to announce the marked object’s name. |
+| selectObjectToDrag | NVDA + ,           | NVDA + ,          | Marks the object under the navigator for dragging.                                                              |
+| DragAndDrop        | NVDA + .           | NVDA + Shift + ,  | Starts dragging the marked object. Then press Space, arrows, or Enter to choose the drop location.              |
 
-Доступні такі параметри перетягування:
-
-+ Натисніть Enter для перетягування позначеного об’єкта в поточну позицію курсора мишки.
-+ Натисніть пробіл для перетягування його до поточного об’єкта в позиції навігатора.
-+ Натисніть стрілки для перетягування його у межах поточного об’єкта в позиції навігатора.
+# Drop Options
+The following keystrokes apply to both laptop and desktop keyboard layouts.
+-   Enter: Drop the selected object at the current mouse cursor position.
+-   Space: Drop the selected object onto the current navigator object.
+-   Arrow keys: Move the selected object within the current navigator object.
