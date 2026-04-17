@@ -191,13 +191,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				x, y, objInPos.appModule.appName, objInPos.role, objInPos.name, objInPos.location))
 			return
 		winUser.setCursorPos(x, y)
+		if winUser.getKeyState(winUser.VK_LBUTTON)&32768:
+			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,0,0)
+		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,1,0,0)
 		if (x,y) != (winUser.getCursorPos()[0], winUser.getCursorPos()[1]):
 			self.error(_("Can't move mouse pointer."))
 			log.warning("Drag: Could not move the mouse pointer to {},{}. Its current position is {},{}. It may be blocked.".format(x, y, winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
 			return
-		if winUser.getKeyState(winUser.VK_LBUTTON)&32768:
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,0,0)
-		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,1,0,0)
 		ui.message(_("click in %d, %d") % (winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
 
 		sleep(1.0)
