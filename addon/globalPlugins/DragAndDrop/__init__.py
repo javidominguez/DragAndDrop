@@ -26,6 +26,7 @@ from threading import Timer
 import tones
 import globalVars
 import mouseHandler
+from logHandler import log
 
 addonHandler.initTranslation()
 
@@ -91,12 +92,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				y = obj.location[1]+1
 			self.dragFromPosition = (x, y)
 			ui.message(_("%s selected to drag") % controlTypes.role._roleLabels[obj.role])
+
 	# Translators: Message presented in input help mode.
 	script_selectObjectToDrag.__doc__ = _("Marks the object in navigator to be dragged.")
 
 	def script_dragAndDrop(self, gesture):
 		if not self.objectToDrag:
 			self.error(_("Nothing is selected for drag"))
+			log.warning("An attempt was made to drop when there was no object marked for dragging.")
 			return
 		if self.toggling:
 			tones.beep(100,10)
@@ -116,10 +119,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		obj = api.getNavigatorObject()
 		if self.objectToDrag == obj:
 			self.error(_("can't move it on himself"))
+			log.warning("An attempt was made to move an object on itself.")
 			return
 		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
+			log.warning("Cannot be dropped on the selected object.\nApp: {}\nRole: {}\nName: {}\nLocation: {}".format(obj.appModule.appName, obj.role, obj.name, obj.location))
 			return
 		x = obj.location[0]+obj.location[2]//2
 		y = obj.location[1]+obj.location[3]//2
@@ -133,6 +138,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
+			log.warning("Cannot be dropped on the selected object.\nApp: {}\nRole: {}\nName: {}\nLocation: {}".format(obj.appModule.appName, obj.role, obj.name, obj.location))
 			return
 		x = obj.location[0]+obj.location[2]//2
 		y = obj.location[1]-1
@@ -143,6 +149,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
+			log.warning("Cannot be dropped on the selected object.\nApp: {}\nRole: {}\nName: {}\nLocation: {}".format(obj.appModule.appName, obj.role, obj.name, obj.location))
 			return
 		x = obj.location[0]+obj.location[2]//2
 		y = obj.location[1]+obj.location[3]+1
@@ -153,6 +160,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
+			log.warning("Cannot be dropped on the selected object.\nApp: {}\nRole: {}\nName: {}\nLocation: {}".format(obj.appModule.appName, obj.role, obj.name, obj.location))
 			return
 		x = obj.location[0]+obj.location[2]+1
 		y = obj.location[1]+obj.location[3]//2
@@ -163,6 +171,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if obj.location == (0, 0, 0, 0) or controlTypes.State.INVISIBLE in obj.states or controlTypes.State.OFFSCREEN in obj.states \
 		or api.getDesktopObject().objectFromPoint(obj.location[0]+1, obj.location[1]+1) != obj:
 			self.error(_("Can't drop here"))
+			log.warning("Cannot be dropped on the selected object.\nApp: {}\nRole: {}\nName: {}\nLocation: {}".format(obj.appModule.appName, obj.role, obj.name, obj.location))
 			return
 		x = obj.location[0]-1
 		y = obj.location[1]+obj.location[3]//2
@@ -175,22 +184,35 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def dragAndDrop(self, drop_x, drop_y):
 		self.kbFinish()
 		x, y = self.dragFromPosition
-		if api.getDesktopObject().objectFromPoint(x,y) != self.objectToDrag:
+		objInPos = api.getDesktopObject().objectFromPoint(x,y)
+		if objInPos != self.objectToDrag:
 			self.error(_("Cannot find the object marked."))
+			log.warning("The object marked for dragging cannot be accessed because it has been moved or another object has overlapped it.\nThe object in {},{} now is:\nApp: {}\nRole: {}\nName: {}\nLocation: {}".format(
+				x, y, objInPos.appModule.appName, objInPos.role, objInPos.name, objInPos.location))
 			return
 		winUser.setCursorPos(x, y)
+		if (x,y) != (winUser.getCursorPos()[0], winUser.getCursorPos()[1]):
+			self.error(_("Can't move mouse pointer."))
+			log.warning("Drag: Could not move the mouse pointer to {},{}. Its current position is {},{}. It may be blocked.".format(x, y, winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
+			return
 		if winUser.getKeyState(winUser.VK_LBUTTON)&32768:
-			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
-		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,1,None,None)
+			winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,0,0)
+		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTDOWN,0,1,0,0)
 		ui.message(_("click in %d, %d") % (winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
+
 		sleep(1.0)
 		ui.message(_("dragging"))
 		sleep(0.5)
 		winUser.setCursorPos(drop_x, drop_y)
+		if (drop_x,drop_y) != (winUser.getCursorPos()[0], winUser.getCursorPos()[1]):
+			self.error(_("Can't move mouse pointer."))
+			log.warning("Drop: Could not move the mouse pointer to {},{}. Its current position is {},{}. It may be blocked.".format(drop_x, drop_y, winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
+			return
 		obj = api.getDesktopObject().objectFromPoint(drop_x,drop_y) 
 		ui.message(_("moved to %d, %d") % (winUser.getCursorPos()[0], winUser.getCursorPos()[1]))
+
 		sleep(0.5)
-		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,None,None)
+		winUser.mouse_event(winUser.MOUSEEVENTF_LEFTUP,0,0,0,0)
 		sleep(1.0)
 		x, y = self.dragFromPosition
 		if api.getDesktopObject().objectFromPoint(x,y) != self.objectToDrag:
@@ -252,7 +274,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.kbTimeout.cancel()
 
 	__gestures = {
-	"kb:NVDA+Control+,": "mouseCursorInfo",
+	"kb(desktop):NVDA+-": "mouseCursorInfo",
+	"kb(laptop):NVDA+Control+,": "mouseCursorInfo",
 	"kb:NVDA+,": "selectObjectToDrag",
 	"kb(desktop):NVDA+.": "dragAndDrop",
 	"kb(laptop):NVDA+Shift+,": "dragAndDrop",
