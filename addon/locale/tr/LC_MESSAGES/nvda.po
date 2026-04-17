@@ -5,63 +5,64 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Sürükle ve Bırak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-13 15:13+0100\n"
-"PO-Revision-Date: 2019-12-23 10:58+0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: es\n"
+"POT-Creation-Date: 2026-04-17 20:57+0300\n"
+"PO-Revision-Date: 2026-04-17 21:03+0300\n"
+"Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: .\n"
 
-#: draganddrop.py:28
+#: DragAndDrop/__init__.py:35
 msgid "Drag and drop"
 msgstr "Sürükle ve bırak"
 
-#: draganddrop.py:41
+#: DragAndDrop/__init__.py:48
 #, python-format
 msgid "Window in %d, %d. Width %d, height %d"
 msgstr "Pencere içinde  %d, %d. genişlik %d, yükseklik %d"
 
-#: draganddrop.py:45
+#: DragAndDrop/__init__.py:52
 msgid "without selection for drag and drop"
 msgstr "sürükle ve bırak için seçilmemiş"
 
-#: draganddrop.py:48
+#: DragAndDrop/__init__.py:56
 msgid " marked for drag and drop"
-msgstr "Sürükle bırak için seçilmiş"
+msgstr " Sürükle bırak için seçilmiş"
 
-#: draganddrop.py:51
+#: DragAndDrop/__init__.py:59
 msgid "(inaccessible from here)"
 msgstr "(buradan erişilemez)"
 
-#: draganddrop.py:55
+#: DragAndDrop/__init__.py:63
 #, python-format
 msgid "Mouse cursor is on %d, %d above "
-msgstr "Fare imleci konumu %d, %d üzerinde"
+msgstr "Fare imleci konumu %d, %d üzerinde "
 
-#: draganddrop.py:59
+#: DragAndDrop/__init__.py:68
 msgid "(outside of the active window)"
 msgstr "(etkin pencerenin dışında)"
 
-#: draganddrop.py:61
+#: DragAndDrop/__init__.py:70
 msgid "Left button locked"
-msgstr "sol fare kilitli"
+msgstr "Sol fare kilitli"
 
-#: draganddrop.py:63
+#: DragAndDrop/__init__.py:72
 msgid "Right button locked"
-msgstr "sağ fare kilitli"
+msgstr "Sağ fare kilitli"
 
-#: draganddrop.py:64
+#: DragAndDrop/__init__.py:73
 #, python-format
 msgid "%s cursor"
 msgstr "%s imleci"
 
-#: draganddrop.py:68
+#: DragAndDrop/__init__.py:75
 msgid ""
 "Reports on the position of the mouse cursor and the object to which it "
 "points. Twice, reports on the marked object for drag and drop."
@@ -70,107 +71,112 @@ msgstr ""
 "basıldığında, sürükleyip bırakmak üzere işaretlenmiş nesne hakkında bilgi "
 "verir."
 
-#: draganddrop.py:72
+#: DragAndDrop/__init__.py:79
 msgid "selection cancelled"
 msgstr "seçim iptal edildi"
 
-#: draganddrop.py:88
+#: DragAndDrop/__init__.py:94
 #, python-format
 msgid "%s selected to drag"
 msgstr "%s sürüklemek için seçildi"
 
-#: draganddrop.py:90
+#: DragAndDrop/__init__.py:97
 msgid "Marks the object in navigator to be dragged."
 msgstr "Nesne sunucusu konumundaki nesneyi sürüklemek için işaretler."
 
-#: draganddrop.py:95
+#: DragAndDrop/__init__.py:101
 msgid "Nothing is selected for drag"
-msgstr "sürüklemek için seçim yok"
+msgstr "Sürüklemek için seçim yok"
 
-#: draganddrop.py:100
+#: DragAndDrop/__init__.py:107
 msgid "press space or arrows to drag and drop"
-msgstr "Sürükleyip bırakmak için ara çubuğu veya yön tuşlarına basın"
+msgstr "sürükleyip bırakmak için ara çubuğu veya yön tuşlarına basın"
 
-#: draganddrop.py:109
+#: DragAndDrop/__init__.py:116
 msgid ""
 "Drags the selected object. Then press space, arrows or Enter to choose where "
 "to drop it. "
 msgstr ""
 "Seçilen nesneyi sürükler. Ardından, nereye bırakacağınızı seçmek için "
-"boşluk, yön veya Enter tuşuna basın."
+"boşluk, yön veya Enter tuşuna basın. "
 
-#: draganddrop.py:114
+#: DragAndDrop/__init__.py:121
 msgid "can't move it on himself"
-msgstr "Kendi konumuna taşınamaz"
+msgstr "kendi konumuna taşınamaz"
 
-#: draganddrop.py:118 draganddrop.py:131 draganddrop.py:141 draganddrop.py:151
-#: draganddrop.py:161
+#: DragAndDrop/__init__.py:126 DragAndDrop/__init__.py:140
+#: DragAndDrop/__init__.py:151 DragAndDrop/__init__.py:162
+#: DragAndDrop/__init__.py:173
 msgid "Can't drop here"
 msgstr "Buraya bırakılamıyor"
 
-#: draganddrop.py:175
+#: DragAndDrop/__init__.py:189
 msgid "Cannot find the object marked."
-msgstr "işaretli nesne bulunamadı"
+msgstr "İşaretli nesne bulunamadı."
 
-#: draganddrop.py:181
+#: DragAndDrop/__init__.py:198 DragAndDrop/__init__.py:208
+msgid "Can't move mouse pointer."
+msgstr "Fare işaretçisi hareket ettirilemiyor."
+
+#: DragAndDrop/__init__.py:201
 #, python-format
 msgid "click in %d, %d"
 msgstr "%d, %d tıkla"
 
-#: draganddrop.py:183
+#: DragAndDrop/__init__.py:204
 msgid "dragging"
 msgstr "sürükleniyor"
 
-#: draganddrop.py:187
+#: DragAndDrop/__init__.py:212
 #, python-format
 msgid "moved to %d, %d"
 msgstr "%d, %d konumuna taşındı"
 
-#: draganddrop.py:193
+#: DragAndDrop/__init__.py:219
 msgid "dropped on "
-msgstr "Bırakıldı"
+msgstr "bırakıldı "
 
-#: draganddrop.py:212
+#: DragAndDrop/__init__.py:238
 msgid "maximized"
-msgstr "Ekran kaplandı"
+msgstr "ekran kaplandı"
 
-#: draganddrop.py:214
+#: DragAndDrop/__init__.py:240
 msgid "large"
-msgstr "Büyük"
+msgstr "büyük"
 
-#: draganddrop.py:216
+#: DragAndDrop/__init__.py:242
 msgid "medium"
-msgstr "Orta"
+msgstr "orta"
 
-#: draganddrop.py:218
+#: DragAndDrop/__init__.py:244
 msgid "small"
-msgstr "Küçük"
+msgstr "küçük"
 
-#: draganddrop.py:220
+#: DragAndDrop/__init__.py:246
 msgid "very small"
-msgstr "Çok küçük"
+msgstr "çok küçük"
 
-#: draganddrop.py:223
+#: DragAndDrop/__init__.py:249
 msgid "centered"
-msgstr "Ortalı"
+msgstr "ortalı"
 
-#: draganddrop.py:227
+#: DragAndDrop/__init__.py:253
 msgid "up"
-msgstr "Yukarı"
+msgstr "yukarı"
 
-#: draganddrop.py:229
+#: DragAndDrop/__init__.py:255
 msgid "down"
-msgstr "Aşağı"
+msgstr "aşağı"
 
-#: draganddrop.py:232
+#: DragAndDrop/__init__.py:258
 msgid "on left"
-msgstr "Solda"
+msgstr "solda"
 
-#: draganddrop.py:234
+#: DragAndDrop/__init__.py:260
 msgid "on right"
-msgstr "Sağda"
+msgstr "sağda"
 
-#: draganddrop.py:235
+#: DragAndDrop/__init__.py:261
 #, python-format
 msgid "%s window, %s %s"
 msgstr "Pencere %s, %s %s"
