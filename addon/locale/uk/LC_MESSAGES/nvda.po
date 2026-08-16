@@ -1,180 +1,180 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DragAndDrop\n"
-"POT-Creation-Date: 2022-06-16 20:45+0300\n"
-"PO-Revision-Date: 2022-06-16 22:30+0300\n"
+"POT-Creation-Date: 2026-08-16 15:43+0300\n"
+"PO-Revision-Date: 2026-08-16 15:51+0300\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian community of NVDA\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1\n"
-"X-Poedit-Basepath: ../../../..\n"
-"X-Poedit-SearchPath-0: addon/globalPlugins/DragAndDrop/__init__.py\n"
-"X-Poedit-SearchPath-1: buildVars.py\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: ../../../globalPlugins\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:34 buildVars.py:17
+#: DragAndDrop/__init__.py:35
 msgid "Drag and drop"
 msgstr "Перетягнути й помістити"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:47
+#: DragAndDrop/__init__.py:48
 #, python-format
 msgid "Window in %d, %d. Width %d, height %d"
 msgstr "Вікно у %d, %d. Ширина %d, висота %d"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:51
+#: DragAndDrop/__init__.py:52
 msgid "without selection for drag and drop"
-msgstr "без позначення для перетягування"
+msgstr "без вибору для перетягування"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:55
+#: DragAndDrop/__init__.py:56
 msgid " marked for drag and drop"
-msgstr " позначено для перетягування"
+msgstr " вибрано для перетягування"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:58
+#: DragAndDrop/__init__.py:59
 msgid "(inaccessible from here)"
 msgstr "(тут недоступно)"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:62
+#: DragAndDrop/__init__.py:63
 #, python-format
 msgid "Mouse cursor is on %d, %d above "
-msgstr "Курсор мишки розташований на %d, %d вище "
+msgstr "Курсор миші розташований на %d, %d вище "
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:67
+#: DragAndDrop/__init__.py:68
 msgid "(outside of the active window)"
 msgstr "(за межами активного вікна)"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:69
+#: DragAndDrop/__init__.py:70
 msgid "Left button locked"
 msgstr "Ліву кнопку заблоковано"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:71
+#: DragAndDrop/__init__.py:72
 msgid "Right button locked"
 msgstr "Праву кнопку заблоковано"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:72
+#: DragAndDrop/__init__.py:73
 #, python-format
 msgid "%s cursor"
 msgstr "%s курсор"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:74
+#: DragAndDrop/__init__.py:75
 msgid ""
 "Reports on the position of the mouse cursor and the object to which it "
 "points. Twice, reports on the marked object for drag and drop."
 msgstr ""
-"Повідомляє про розташування курсора мишки й об’єкт, на який він вказує. "
-"Подвійне натискання повідомляє про позначений об’єкт для перетягування."
+"Повідомляє про розташування курсора миші й об’єкт, на який він вказує. "
+"Подвійне натискання повідомляє про вибраний об’єкт для перетягування."
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:78
+#: DragAndDrop/__init__.py:79
 msgid "selection cancelled"
-msgstr "позначення скасовано"
+msgstr "вибір скасовано"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:93
+#: DragAndDrop/__init__.py:94
 #, python-format
 msgid "%s selected to drag"
-msgstr "%s позначено для перетягування"
+msgstr "%s вибрано для перетягування"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:95
+#: DragAndDrop/__init__.py:97
 msgid "Marks the object in navigator to be dragged."
-msgstr "Позначає об’єкт у позиції навігатора для перетягування."
+msgstr "Вибирає об’єкт у позиції навігатора для перетягування."
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:99
+#: DragAndDrop/__init__.py:101
 msgid "Nothing is selected for drag"
-msgstr "Немає нічого для перетягування"
+msgstr "Нічого не вибрано для перетягування"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:104
+#: DragAndDrop/__init__.py:107
 msgid "press space or arrows to drag and drop"
 msgstr "натисніть пробіл або стрілки, щоб перетягнути й помістити"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:113
+#: DragAndDrop/__init__.py:116
 msgid ""
 "Drags the selected object. Then press space, arrows or Enter to choose where "
 "to drop it. "
 msgstr ""
-"Перетягує виділений об’єкт. Потім натисніть пробіл, стрілки або Enter, щоб "
+"Перетягує вибраний об’єкт. Потім натисніть пробіл, стрілки або Enter, щоб "
 "вибрати, куди його помістити. "
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:118
+#: DragAndDrop/__init__.py:121
 msgid "can't move it on himself"
-msgstr "не можу його посунути"
+msgstr "не можу перемістити"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:122
-#: addon/globalPlugins/DragAndDrop/__init__.py:135
-#: addon/globalPlugins/DragAndDrop/__init__.py:145
-#: addon/globalPlugins/DragAndDrop/__init__.py:155
-#: addon/globalPlugins/DragAndDrop/__init__.py:165
+#: DragAndDrop/__init__.py:126 DragAndDrop/__init__.py:140
+#: DragAndDrop/__init__.py:151 DragAndDrop/__init__.py:162
+#: DragAndDrop/__init__.py:173
 msgid "Can't drop here"
 msgstr "Не можу тут помістити"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:179
+#: DragAndDrop/__init__.py:189
 msgid "Cannot find the object marked."
-msgstr "Не можу знайти позначений об’єкт."
+msgstr "Не можу знайти вибраний об’єкт."
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:185
+#: DragAndDrop/__init__.py:198 DragAndDrop/__init__.py:208
+msgid "Can't move mouse pointer."
+msgstr "Не вдається перемістити вказівник миші."
+
+#: DragAndDrop/__init__.py:201
 #, python-format
 msgid "click in %d, %d"
 msgstr "клацання у %d, %d"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:187
+#: DragAndDrop/__init__.py:204
 msgid "dragging"
 msgstr "перетягування"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:191
+#: DragAndDrop/__init__.py:212
 #, python-format
 msgid "moved to %d, %d"
 msgstr "переміщено до %d, %d"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:197
+#: DragAndDrop/__init__.py:219
 msgid "dropped on "
 msgstr "поміщено в "
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:216
+#: DragAndDrop/__init__.py:238
 msgid "maximized"
 msgstr "розгорнутий"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:218
+#: DragAndDrop/__init__.py:240
 msgid "large"
 msgstr "великий"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:220
+#: DragAndDrop/__init__.py:242
 msgid "medium"
 msgstr "середній"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:222
+#: DragAndDrop/__init__.py:244
 msgid "small"
 msgstr "маленький"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:224
+#: DragAndDrop/__init__.py:246
 msgid "very small"
 msgstr "дуже маленький"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:227
+#: DragAndDrop/__init__.py:249
 msgid "centered"
 msgstr "центровано"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:231
+#: DragAndDrop/__init__.py:253
 msgid "up"
 msgstr "вгору"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:233
+#: DragAndDrop/__init__.py:255
 msgid "down"
 msgstr "вниз"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:236
+#: DragAndDrop/__init__.py:258
 msgid "on left"
 msgstr "ліворуч"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:238
+#: DragAndDrop/__init__.py:260
 msgid "on right"
 msgstr "праворуч"
 
-#: addon/globalPlugins/DragAndDrop/__init__.py:239
+#: DragAndDrop/__init__.py:261
 #, python-format
 msgid "%s window, %s %s"
 msgstr "%s вікно, %s %s"
 
-#: buildVars.py:20
-msgid "Makes it easy to drag and drop objects."
-msgstr "Робить перетягування об’єктів легким."
+#~ msgid "Makes it easy to drag and drop objects."
+#~ msgstr "Робить перетягування об’єктів легким."
