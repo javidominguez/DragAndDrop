@@ -3,6 +3,7 @@
 #See the file COPYING.txt for more details.
 #Copyright (C) 2016-2021 Javi Dominguez <fjavids@gmail.com>
 
+from .actualizadorRecursos import ActualizadorRecursos
 import globalPluginHandler
 import addonHandler
 import appModuleHandler
@@ -42,6 +43,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.dragFromPosition = None
 		self.toggling = False
 		self.kbTimeout = None
+		self._actualizador = ActualizadorRecursos("javidominguez", "DragAndDrop", rama="master", intervalo_horas=12)
+
+	def terminate(self):
+		self._actualizador.detener()
 
 	def script_mouseCursorInfo(self, gesture):
 		if scriptHandler.getLastScriptRepeatCount() == 2:
